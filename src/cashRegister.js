@@ -43,25 +43,25 @@ addItem(registerB, 'gum', 5)
 console.log('A items:', registerA)
 console.log('B items:', registerB)
 
-console.log('----------------------')
+console.log('--------------------------------------------')
 
 console.log('Total A:', getTotal(registerA))
 console.log('Total B:', getTotal(registerB))
 
-console.log('----------------------')
+console.log('--------------------------------------------')
 
 removeItem(registerA, 'shoes')
 removeItem(registerB, 'gum')
 console.log('remove shoes:', registerA)
 console.log('remove gum:', registerB)
 
-console.log('----------------------')
+console.log('--------------------------------------------')
 
 trackRegister(registerA, registerList)
 trackRegister(registerB, registerList)
 console.log('tracked registers:', registerList)
 
-console.log('----------------------')
+console.log('--------------------------------------------')
 
 const totalAll = getTotalAll(registerList)
 console.log('Total All:', totalAll)
