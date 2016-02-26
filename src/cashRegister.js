@@ -2,14 +2,9 @@
 const without = (arr, key, val) => arr.filter(item => item[key] !== val)
 
 // Register
-// {
-//   items: [
-//     { name: 'shirt', cost: 15 }
-//   ]
-// }
-const cashRegister = {
-  items: []
-}
+const registerList = []
+const registerA = { items: [] }
+const registerB = { items: [] }
 
 const addItem = (register, name, cost) => {
   const item = {
@@ -21,36 +16,52 @@ const addItem = (register, name, cost) => {
 }
 
 const getTotal = (register) => {
-  return register.items.reduce((prev, curr) => prev + curr.cost, 0)
+  return register.items.reduce((prev, curr) => {
+    return prev + curr.cost
+  }, 0)
 }
 
 const removeItem = (register, itemName) => {
   return register.items = without(register.items, 'name', itemName)
 }
 
+const trackRegister = (register, list) => list.push(register)
+
+const getTotalAll = (list) => {
+  return list.reduce((prev, curr) => {
+    return prev + getTotal(curr)
+  }, 0)
+}
+
 //////////////////////////////////////////////////////////////////////////
 // Usage
 
-addItem(cashRegister, 'shoes', 50)
-addItem(cashRegister, 'pants', 80)
-addItem(cashRegister, 'shirt', 15)
-addItem(cashRegister, 'gum', 5)
+addItem(registerA, 'shoes', 50)
+addItem(registerA, 'pants', 80)
+addItem(registerB, 'shirt', 15)
+addItem(registerB, 'gum', 5)
+console.log('A items:', registerA)
+console.log('B items:', registerB)
 
-const total = getTotal(cashRegister)
-console.log('Total is:', total)
+console.log('----------------------')
 
-removeItem(cashRegister, 'gum')
-console.log(cashRegister)
+console.log('Total A:', getTotal(registerA))
+console.log('Total B:', getTotal(registerB))
 
-// const registerList = []
-//
-// trackRegister(cashRegister, registerList)
-// console.log(registerList)
-//=> [ {...cashRegister } ]
-//
-// const totalAll = getTotalAll(registerList)
-//
-// console.log(totalAll)
-//=> 1234 (the total of all items in all registers)
+console.log('----------------------')
 
-// console.log(cashRegister)
+removeItem(registerA, 'shoes')
+removeItem(registerB, 'gum')
+console.log('remove shoes:', registerA)
+console.log('remove gum:', registerB)
+
+console.log('----------------------')
+
+trackRegister(registerA, registerList)
+trackRegister(registerB, registerList)
+console.log('tracked registers:', registerList)
+
+console.log('----------------------')
+
+const totalAll = getTotalAll(registerList)
+console.log('Total All:', totalAll)
