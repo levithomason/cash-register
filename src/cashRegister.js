@@ -11,7 +11,7 @@ const cashRegister = {
   items: []
 }
 
-function addItem(register, name, cost) {
+const addItem = (register, name, cost) => {
   const item = {
     name: name,
     cost: cost
@@ -20,21 +20,26 @@ function addItem(register, name, cost) {
   register.items.push(item)
 }
 
+const getTotal = (register) => {
+  return register.items.reduce((prev, curr) => prev + curr.cost, 0)
+}
 
-function getTotal(register) {
-  return register.items.reduce((prev, curr) => prev.cost + curr.cost)
+const removeItem = (register, itemName) => {
+  return register.items = without(register.items, 'name', itemName)
 }
 
 //////////////////////////////////////////////////////////////////////////
 // Usage
 
 addItem(cashRegister, 'shoes', 50)
+addItem(cashRegister, 'pants', 80)
 addItem(cashRegister, 'shirt', 15)
+addItem(cashRegister, 'gum', 5)
 
 const total = getTotal(cashRegister)
 console.log('Total is:', total)
 
-cashRegister.items = without(cashRegister.items, 'name', 'shoes')
+removeItem(cashRegister, 'gum')
 console.log(cashRegister)
 
 // const registerList = []
