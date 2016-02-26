@@ -1,3 +1,12 @@
+// Utilities
+const without = (arr, key, val) => arr.filter(item => item[key] !== val)
+
+// Register
+// {
+//   items: [
+//     { name: 'shirt', cost: 15 }
+//   ]
+// }
 const cashRegister = {
   items: []
 }
@@ -11,12 +20,6 @@ function addItem(register, name, cost) {
   register.items.push(item)
 }
 
-// {
-//   items: [
-//     { name: 'shoes', cost: 50 },
-//     { name: 'shirt', cost: 15 }
-//   ]
-// }
 
 function getTotal(register) {
   return register.items.reduce((prev, curr) => prev.cost + curr.cost)
@@ -31,11 +34,9 @@ addItem(cashRegister, 'shirt', 15)
 const total = getTotal(cashRegister)
 console.log('Total is:', total)
 
-// Next functionality
-//
-// removeItem(cashRegister, name)
-// console.log(cashRegister.items) //=> array without the item 'name' above
-//
+cashRegister.items = without(cashRegister.items, 'name', 'shoes')
+console.log(cashRegister)
+
 // const registerList = []
 //
 // trackRegister(cashRegister, registerList)
@@ -47,4 +48,4 @@ console.log('Total is:', total)
 // console.log(totalAll)
 //=> 1234 (the total of all items in all registers)
 
-console.log(cashRegister)
+// console.log(cashRegister)
