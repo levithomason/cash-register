@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "babel-node": "babel-node",
-    "start": "nodemon --exec npm run babel-node -- src/cashRegisterClass.js"
+    "start": "nodemon --exec npm run babel-node -- src/game.js"
   },
   "author": "",
   "license": "ISC",
